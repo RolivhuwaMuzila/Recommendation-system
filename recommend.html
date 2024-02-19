@@ -5,6 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movie Recommendation</title>
   <link rel="stylesheet" href="style7.css">
+  <Style>
+   body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
+}
+
+.container {
+	max-width: 600px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form-group{
+	margin-bottom: 20px;
+}
+label{
+	font-weight: bold;
+}
+
+
+select, button{
+padding: 8px;
+font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+  background-color: blue;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#movie-info {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+ 
+  </Style>
 </head>
 <body>
   <div class="container">
@@ -25,7 +79,30 @@
     </div>
   </div>
 
-  <script src="script3.js"></script>
+  <script src="script3.js">
+  const movies = [
+  { id: 1, title: 'The Shawshank Redemption', genre: 'Drama' },
+  { id: 2, title: 'The Godfather', genre: 'Crime' },
+  { id: 3, title: 'The Dark Knight', genre: 'Action' },
+  { id: 4, title: 'Pulp Fiction', genre: 'Crime' },
+  { id: 5, title: 'Schindler\'s List', genre: 'Biography' }
+];
+
+function recommendMovie() {
+  const genre = document.getElementById('genre').value;
+  const genreMovies = movies.filter(movie => movie.genre === genre);
+  if (genreMovies.length === 0) {
+    document.getElementById('movie-info').innerHTML = "<p>Sorry, no movies found in that genre.</p>";
+    return;
+  }
+  const randomIndex = Math.floor(Math.random() * genreMovies.length);
+  const recommendedMovie = genreMovies[randomIndex];
+  document.getElementById('movie-info').innerHTML = `<p><strong>Title:</strong> ${recommendedMovie.title}</
+
+p><p><strong>Genre:</strong> ${recommendedMovie.genre}</p>`;
+}
+  
+  </script>
 </body>
 </html>
 
